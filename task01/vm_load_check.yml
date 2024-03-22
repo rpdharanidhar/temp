@@ -1,6 +1,6 @@
 ---
 - name: Check VM load
-  hosts: all
+  hosts: test_servers
   tasks:
     - name: Ping hosts
       ansible.builtin.ping:
