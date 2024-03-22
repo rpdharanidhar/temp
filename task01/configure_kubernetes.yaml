@@ -1,0 +1,22 @@
+---
+- hosts: kubernetes_nodes
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Add Kubernetes apt repository
+      apt_repository:
+        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+
+    - name: Install Kubernetes components
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - kubelet
+        - kubeadm
+        - kubectl

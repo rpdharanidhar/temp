@@ -1,0 +1,22 @@
+---
+- name: Check VM load
+  hosts: localhost
+  tasks:
+    - name: Ping hosts
+      ansible.builtin.ping:
+
+    - name: Get load Averages
+      ansible.builtin.shell: uptime
+      register: uptime_output
+
+    - name: Get RAM Usage
+      ansible.builtin.shell: free -m
+      register: ram_output
+
+    - name: Display Uptime
+      ansible.builtin.debug:
+        msg: "Uptime on {{ inventory_hostname }}: {{ uptime_output.stdout }}"
+
+    - name: Display RAM Usage
+      ansible.builtin.debug:
+        msg: "RAM usage on {{ inventory_hostname }}:\n{{ ram_output.stdout }}"
