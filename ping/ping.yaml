@@ -1,0 +1,5 @@
+---
+- hosts: ping_server
+  tasks:
+    - name: Ping the remote server
+      ping:

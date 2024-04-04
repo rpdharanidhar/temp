@@ -1,0 +1,70 @@
+
+PLAY [Configure MySQL in Ubuntu] ***********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Install MySQL] ***********************************************************
+ok: [localhost]
+
+TASK [Install PyMySQL] *********************************************************
+ok: [localhost]
+
+TASK [Secure MySQL installation] ***********************************************
+ok: [localhost]
+
+TASK [Create a database] *******************************************************
+ok: [localhost]
+
+TASK [Create a MySQL user] *****************************************************
+ok: [localhost]
+
+TASK [Insert data into MySQL table] ********************************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Configure Web Servers] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Install Apache] **********************************************************
+ok: [localhost]
+
+TASK [Start Apache Service] ****************************************************
+ok: [localhost]
+
+TASK [Copy index.html] *********************************************************
+ok: [localhost] => (item={'src': 'success.html', 'dest': 'success.html.html'})
+changed: [localhost] => (item={'src': 'index.php', 'dest': 'index.php'})
+
+TASK [Restart Apache Service] **************************************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=12   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Configure Load Balancer Servers] *****************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Install HAProxy] *********************************************************
+ok: [localhost]
+
+TASK [Configure HAProxy] *******************************************************
+ok: [localhost]
+
+TASK [Update apt package cache] ************************************************
+ok: [localhost]
+
+TASK [Ensure HAProxy service is running] ***************************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=17   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
